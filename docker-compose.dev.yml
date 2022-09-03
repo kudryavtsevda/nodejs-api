@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgresdb:
+    container_name: postgresdb
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - postgre:/var/lib/postgresql/data
+      - postgre_config:/usr/share/postgresql
+  api:
+    container_name: api
+    build:
+      context: .
+    ports:
+      - 8000:8000
+      - 9229:9229
+    environment:
+      - DB_PASSWORD=secret
+      - DB_HOST=postgresdb
+    volumes:
+      - ./:/app
+    command: npm run debug
+volumes:
+  postgre:
+    name: postgre
+  postgre_config:
+    name: postgre_config
