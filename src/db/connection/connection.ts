@@ -8,6 +8,7 @@ export default () => {
   const dbDriver = process.env.DB_DRIVER as Dialect;
   const dbPassword = process.env.DB_PASSWORD as string;
   const dbPort = process.env.DB_PORT as unknown as number;
+  const dbSslRequired = process.env.DB_SSL_REQUIRED as unknown as boolean;
   return new Sequelize({
     database: dbName,
     username: dbUser,
@@ -16,5 +17,6 @@ export default () => {
     dialect: dbDriver,
     models: [__dirname.concat(`/../models`)],
     port: dbPort,
+    ssl: dbSslRequired,
   });
 };

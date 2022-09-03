@@ -11,4 +11,5 @@ export const development = {
   dialect: process.env.DB_DRIVER as Dialect,
   logging: true,
   port: process.env.DB_PORT,
+  sslRequired: process.env.DB_SSL_REQUIRED,
 };
