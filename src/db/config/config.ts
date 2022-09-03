@@ -10,4 +10,5 @@ export const development = {
   host: process.env.DB_HOST,
   dialect: process.env.DB_DRIVER as Dialect,
   logging: true,
+  port: process.env.DB_PORT,
 };
