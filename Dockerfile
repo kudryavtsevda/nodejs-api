@@ -7,7 +7,7 @@ FROM base as test
 RUN npm ci
 RUN npm i -g typescript && npm i -g ts-node
 COPY . .
-RUN npm run test
+RUN npm run test 
 
 FROM base as prod
 COPY . .
